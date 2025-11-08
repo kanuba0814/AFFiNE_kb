@@ -15,8 +15,8 @@ export function patchFileSizeLimitExtension(framework: FrameworkProvider) {
     extends Extension
     implements IFileSizeLimitService
   {
-    // 2GB
-    maxFileSize = 2 * 1024 * 1024 * 1024;
+    // 10GB - Increased for personal use
+    maxFileSize = 10 * 1024 * 1024 * 1024;
 
     onOverFileSize() {
       workspaceDialogService.open('setting', {

@@ -183,9 +183,10 @@ export class QuotaService {
   }
 
   async tryCheckSeat(workspaceId: string, excludeSelf = false) {
-    const quota = await this.getWorkspaceSeatQuota(workspaceId);
-
-    return quota.memberCount - (excludeSelf ? 1 : 0) < quota.memberLimit;
+    // Always return true for personal use - no member limit enforcement
+    return true;
+    // const quota = await this.getWorkspaceSeatQuota(workspaceId);
+    // return quota.memberCount - (excludeSelf ? 1 : 0) < quota.memberLimit;
   }
 
   async checkSeat(workspaceId: string, excludeSelf = false) {

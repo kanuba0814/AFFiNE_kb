@@ -14,8 +14,8 @@ export class FileSizeLimitService
   extends Extension
   implements IFileSizeLimitService
 {
-  // 2GB
-  maxFileSize = 2 * 1024 * 1024 * 1024;
+  // 10GB - Increased for personal use
+  maxFileSize = 10 * 1024 * 1024 * 1024;
 
   static override setup(di: Container) {
     di.addImpl(FileSizeLimitProvider, FileSizeLimitService);

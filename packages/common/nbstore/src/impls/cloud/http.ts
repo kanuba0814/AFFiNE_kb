@@ -18,7 +18,7 @@ export class HttpConnection extends DummyConnection {
       abortController.abort(reason);
     });
 
-    const timeout = init?.timeout ?? 15000;
+    const timeout = init?.timeout ?? 300000; // 5 minutes - Increased for personal use
     const timeoutId = setTimeout(() => {
       abortController.abort(new Error('request timeout'));
     }, timeout);

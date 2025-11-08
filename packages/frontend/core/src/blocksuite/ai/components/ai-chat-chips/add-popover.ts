@@ -179,8 +179,8 @@ export class ChatPanelAddPopover extends SignalWatcher(
 
     const others = files.filter(file => !file.type.startsWith('image/'));
     const addChipPromises = others.map(async file => {
-      if (file.size > 50 * 1024 * 1024) {
-        toast(`${file.name} is too large, please upload a file less than 50MB`);
+      if (file.size > 500 * 1024 * 1024) {
+        toast(`${file.name} is too large, please upload a file less than 500MB`);
         return;
       }
       await this.addChip({

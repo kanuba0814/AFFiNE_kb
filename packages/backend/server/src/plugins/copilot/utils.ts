@@ -6,7 +6,7 @@ import { OneMB, readBufferWithLimit } from '../../base';
 import type { PromptTools } from './providers';
 import type { ToolsConfig } from './types';
 
-export const MAX_EMBEDDABLE_SIZE = 50 * OneMB;
+export const MAX_EMBEDDABLE_SIZE = 500 * OneMB; // Increased for personal use
 
 export function readStream(
   readable: Readable,

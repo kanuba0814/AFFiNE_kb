@@ -101,12 +101,12 @@ export const FeatureConfigs: {
     configs: {
       // quota name
       name: 'Free',
-      blobLimit: 10 * OneMB,
-      businessBlobLimit: 100 * OneMB,
-      storageQuota: 10 * OneGB,
-      historyPeriod: 7 * OneDay,
-      memberLimit: 3,
-      copilotActionLimit: 10,
+      blobLimit: 1024 * OneMB, // 1GB - Increased for personal use
+      businessBlobLimit: 1024 * OneMB, // 1GB - Increased for personal use
+      storageQuota: 10000 * OneGB, // 10TB - Increased for personal use
+      historyPeriod: 365 * OneDay, // 1 year - Increased for personal use
+      memberLimit: 999, // Increased for personal use
+      copilotActionLimit: 999999, // Unlimited for personal use
     },
   },
   pro_plan_v1: {
@@ -114,11 +114,11 @@ export const FeatureConfigs: {
     deprecatedVersion: 2,
     configs: {
       name: 'Pro',
-      blobLimit: 100 * OneMB,
-      storageQuota: 100 * OneGB,
-      historyPeriod: 30 * OneDay,
-      memberLimit: 10,
-      copilotActionLimit: 10,
+      blobLimit: 1024 * OneMB, // 1GB - Increased for personal use
+      storageQuota: 10000 * OneGB, // 10TB - Increased for personal use
+      historyPeriod: 365 * OneDay, // 1 year - Increased for personal use
+      memberLimit: 999, // Increased for personal use
+      copilotActionLimit: 999999, // Unlimited for personal use
     },
   },
   lifetime_pro_plan_v1: {
@@ -126,11 +126,11 @@ export const FeatureConfigs: {
     deprecatedVersion: 1,
     configs: {
       name: 'Lifetime Pro',
-      blobLimit: 100 * OneMB,
-      storageQuota: 1024 * OneGB,
-      historyPeriod: 30 * OneDay,
-      memberLimit: 10,
-      copilotActionLimit: 10,
+      blobLimit: 1024 * OneMB, // 1GB - Increased for personal use
+      storageQuota: 10000 * OneGB, // 10TB - Increased for personal use
+      historyPeriod: 365 * OneDay, // 1 year - Increased for personal use
+      memberLimit: 999, // Increased for personal use
+      copilotActionLimit: 999999, // Unlimited for personal use
     },
   },
   team_plan_v1: {
@@ -138,11 +138,11 @@ export const FeatureConfigs: {
     deprecatedVersion: 1,
     configs: {
       name: 'Team Workspace',
-      blobLimit: 500 * OneMB,
-      storageQuota: 100 * OneGB,
-      seatQuota: 20 * OneGB,
-      historyPeriod: 30 * OneDay,
-      memberLimit: 1,
+      blobLimit: 1024 * OneMB, // 1GB - Increased for personal use
+      storageQuota: 10000 * OneGB, // 10TB - Increased for personal use
+      seatQuota: 1000 * OneGB, // Increased for personal use
+      historyPeriod: 365 * OneDay, // 1 year - Increased for personal use
+      memberLimit: 999, // Increased for personal use
     },
   },
   early_access: {

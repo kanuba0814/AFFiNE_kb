@@ -350,8 +350,8 @@ export class CommentResolver {
 
     // TODO(@fengmk2): should check total attachment quota in the future version
     const buffer = await readableToBuffer(attachment.createReadStream());
-    // max attachment size is 10MB
-    if (buffer.length > 10 * 1024 * 1024) {
+    // max attachment size is 500MB - Increased for personal use
+    if (buffer.length > 500 * 1024 * 1024) {
       throw new CommentAttachmentQuotaExceeded();
     }
 

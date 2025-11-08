@@ -40,7 +40,7 @@ export class FetchService extends Service {
       abortController.abort(reason);
     });
 
-    const timeout = init?.timeout ?? 15000;
+    const timeout = init?.timeout ?? 300000; // 5 minutes - Increased for personal use
     const timeoutId =
       timeout > 0
         ? setTimeout(() => {

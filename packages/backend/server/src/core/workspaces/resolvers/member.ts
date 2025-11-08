@@ -195,10 +195,11 @@ export class WorkspaceMemberResolver {
             inviteId: role.id,
           });
         } else {
-          const needMoreSeat = quota.memberCount + idx + 1 > quota.memberLimit;
-          if (needMoreSeat) {
-            throw new NoMoreSeat({ spaceId: workspaceId });
-          } else {
+          // Removed member limit check for personal use
+          // const needMoreSeat = quota.memberCount + idx + 1 > quota.memberLimit;
+          // if (needMoreSeat) {
+          //   throw new NoMoreSeat({ spaceId: workspaceId });
+          // } else {
             const role = await this.models.workspaceUser.set(
               workspaceId,
               target.id,
@@ -358,10 +359,11 @@ export class WorkspaceMemberResolver {
             }
           );
         } else {
-          const quota = await this.quota.getWorkspaceSeatQuota(workspaceId);
-          if (quota.memberCount >= quota.memberLimit) {
-            throw new NoMoreSeat({ spaceId: workspaceId });
-          } else {
+          // Removed member limit check for personal use
+          // const quota = await this.quota.getWorkspaceSeatQuota(workspaceId);
+          // if (quota.memberCount >= quota.memberLimit) {
+          //   throw new NoMoreSeat({ spaceId: workspaceId });
+          // } else {
             await this.models.workspaceUser.setStatus(
               workspaceId,
               userId,

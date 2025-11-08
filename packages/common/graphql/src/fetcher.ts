@@ -79,7 +79,7 @@ export type RequestOptions<Q extends GraphQLQuery> = QueryVariablesOption<Q> & {
   keepNilVariables?: boolean;
   /**
    * Request timeout in milliseconds
-   * @default 15000
+   * @default 300000
    */
   timeout?: number;
   /**
