@@ -1,0 +1,10 @@
+# Environment file with secrets
+.env
+
+# Data directories
+pgdata/
+storage/
+config/
+
+# Logs
+*.log

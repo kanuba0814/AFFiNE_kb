@@ -1,0 +1,76 @@
+name: affine-custom
+services:
+  affine:
+    image: localhost/affine-custom:latest
+    container_name: affine_server
+    ports:
+      - '${PORT:-3010}:3010'
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      affine_migration:
+        condition: service_completed_successfully
+    volumes:
+      - ${UPLOAD_LOCATION:-./storage}:/root/.affine/storage
+      - ${CONFIG_LOCATION:-./config}:/root/.affine/config
+    environment:
+      - NODE_ENV=production
+      - AFFINE_SERVER_HOST=${AFFINE_SERVER_HOST:-localhost}
+      - AFFINE_SERVER_PORT=3010
+      - AFFINE_SERVER_HTTPS=${AFFINE_SERVER_HTTPS:-false}
+      - DATABASE_URL=postgresql://${DB_USERNAME:-affine}:${DB_PASSWORD:-affine}@postgres:5432/${DB_DATABASE:-affine}
+      - REDIS_SERVER_HOST=redis
+      - AFFINE_INDEXER_ENABLED=false
+    restart: unless-stopped
+
+  affine_migration:
+    image: localhost/affine-custom:latest
+    container_name: affine_migration_job
+    volumes:
+      - ${UPLOAD_LOCATION:-./storage}:/root/.affine/storage
+      - ${CONFIG_LOCATION:-./config}:/root/.affine/config
+    command: ['sh', '-c', 'node ./scripts/self-host-predeploy.js']
+    environment:
+      - DATABASE_URL=postgresql://${DB_USERNAME:-affine}:${DB_PASSWORD:-affine}@postgres:5432/${DB_DATABASE:-affine}
+      - REDIS_SERVER_HOST=redis
+      - AFFINE_INDEXER_ENABLED=false
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: docker.io/library/redis:latest
+    container_name: affine_redis
+    healthcheck:
+      test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+  postgres:
+    image: docker.io/pgvector/pgvector:pg16
+    container_name: affine_postgres
+    volumes:
+      - ${DB_DATA_LOCATION:-./pgdata}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-affine}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-affine}
+      POSTGRES_DB: ${DB_DATABASE:-affine}
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+      POSTGRES_HOST_AUTH_METHOD: trust
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', '${DB_USERNAME:-affine}', '-d', '${DB_DATABASE:-affine}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  redis-data:
