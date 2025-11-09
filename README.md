@@ -1,5 +1,32 @@
 <div align="center">
 
+# ⚠️ IMPORTANT NOTICE - PERSONAL FORK ⚠️
+
+> **THIS IS A PERSONAL FORK OF AFFiNE WITH MODIFIED LIMITS**
+>
+> **🚨 FOR PERSONAL USE ONLY - NOT FOR COMMERCIAL OR BUSINESS USE 🚨**
+>
+> This fork has been customized with the following modifications for personal deployment:
+> - Removed file upload size limits (increased to 10GB frontend, 1GB backend)
+> - Removed user count restrictions (increased to 999 members)
+> - Extended file upload timeout from 15 seconds to 5 minutes
+> - Removed UI prompts ("Download App", "Learn more" buttons)
+> - Increased storage quotas to 10TB and extended history to 1 year
+>
+> **LICENSE WARNING:**
+> - This fork is based on AFFiNE which is licensed under specific terms
+> - These modifications are intended for **PERSONAL USE ONLY**
+> - **DO NOT** use this fork for any commercial purposes
+> - **DO NOT** distribute or deploy this fork for business use
+> - **DO NOT** sell or offer this as a service to others
+> - For commercial use, please contact [AFFiNE](https://affine.pro) for proper licensing
+>
+> By using this fork, you acknowledge and agree to these restrictions.
+>
+> For the original, unmodified AFFiNE, visit: https://github.com/toeverything/AFFiNE
+
+---
+
 <h1 style="border-bottom: none">
     <b><a href="https://affine.pro">AFFiNE.Pro</a></b><br />
     Write, Draw and Plan All at Once
